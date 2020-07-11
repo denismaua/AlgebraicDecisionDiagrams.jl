@@ -1,5 +1,7 @@
 module AlgebraicDecisionDiagrams
 
-# Write your package code here.
+include("DecisionDiagrams.jl")
+include("Operations.jl")
+include("MultilinearExpressions.jl")
 
-end
+end # module
