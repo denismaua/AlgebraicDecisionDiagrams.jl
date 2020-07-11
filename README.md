@@ -9,7 +9,7 @@ This package implements Algebraic Decision Diagrams [2]. It is focused on usabil
 ## Instalation
 
 In a Julia shell, type:
-```
+```julia
 import Pkg; Pkg.add("http://github.com/denismaua/AlgebraicDecisionDiagrams.jl")
 ```
 
