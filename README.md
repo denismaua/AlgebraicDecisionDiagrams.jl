@@ -4,7 +4,7 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://denismaua.github.io/AlgebraicDecisionDiagrams.jl/dev)
 [![Build Status](https://github.com/denismaua/AlgebraicDecisionDiagrams.jl/workflows/CI/badge.svg)](https://github.com/denismaua/AlgebraicDecisionDiagrams.jl/actions)
 
-This package implements Algebraic Decision Diagrams [2](#adds). It is focused on usability at the expense of optimization.
+This package implements Algebraic Decision Diagrams [[2]](#adds). It is focused on usability at the expense of optimization.
 
 ## Instalation
 
@@ -15,7 +15,7 @@ import Pkg; Pkg.add("http://github.com/denismaua/AlgebraicDecisionDiagrams.jl")
 
 ## Usage
 
-ADD are represented as parametric linked structures. The easiest way to create and manipulate ADDs is by using operations and constants. Omitting types is equivalent to assuming Boolean constant values (hence BDDs [1](#bdds)).
+ADD are represented as parametric linked structures. The easiest way to create and manipulate ADDs is by using operations and constants. Omitting types is equivalent to assuming Boolean constant values (hence BDDs [[1]](#bdds)).
 
 ```julia
 using AlgebraicDecisionDiagrams
