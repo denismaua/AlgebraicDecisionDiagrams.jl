@@ -4,7 +4,7 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://denismaua.github.io/AlgebraicDecisionDiagrams.jl/dev)
 [![Build Status](https://github.com/denismaua/AlgebraicDecisionDiagrams.jl/workflows/CI/badge.svg)](https://github.com/denismaua/AlgebraicDecisionDiagrams.jl/actions)
 
-This package implements Algebraic Decision Diagrams [2]. It is focused on usability at the expense of optimization.
+This package implements Algebraic Decision Diagrams [2](#adds). It is focused on usability at the expense of optimization.
 
 ## Instalation
 
@@ -15,7 +15,7 @@ import Pkg; Pkg.add("http://github.com/denismaua/AlgebraicDecisionDiagrams.jl")
 
 ## Usage
 
-ADD are represented as parametric linked structures. The easiest way to create and manipulate ADDs is by using operations and constants. Omitting types is equivalent to assuming Boolean constant values (hence BDDs).
+ADD are represented as parametric linked structures. The easiest way to create and manipulate ADDs is by using operations and constants. Omitting types is equivalent to assuming Boolean constant values (hence BDDs [1](#bdds)).
 
 ```julia
 using AlgebraicDecisionDiagrams
@@ -103,6 +103,6 @@ See LICENSE file
 
 For more information on ADDs and BDDs see:
 
-[1] Bryant, Randal E. Graph-based algorithms for boolean function manipulation. Computers, IEEE Transactions on 100, no. 8 (1986): 677-691.
+<a name="bdds">[1]</a>: Bryant, Randal E. Graph-based algorithms for boolean function manipulation. Computers, IEEE Transactions on 100, no. 8 (1986): 677-691.
 
-[2] Bahar, R. Iris, Erica A. Frohm, Charles M. Gaona, Gary D. Hachtel, Enrico Macii, Abelardo Pardo, and Fabio Somenzi. Algebraic decision diagrams and their applications. Formal methods in system design 10, no. 2-3 (1997): 171-206.
+<a name="adds">[2]</a>: Bahar, R. Iris, Erica A. Frohm, Charles M. Gaona, Gary D. Hachtel, Enrico Macii, Abelardo Pardo, and Fabio Somenzi. Algebraic decision diagrams and their applications. Formal methods in system design 10, no. 2-3 (1997): 171-206.
