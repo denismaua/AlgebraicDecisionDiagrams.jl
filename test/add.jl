@@ -43,7 +43,11 @@
     y1 = indicator(Int,3)
     ny1 = indicator(Int,3,true)
     @show graph = Terminal(2)*nx0*nx1*ny0*y1 + Terminal(2)*nx0*nx1*y0*ny1 + Terminal(2)*nx0*x1*ny0*y1 + Terminal(2)*nx0*x1*y0*ny1 + Terminal(4)*x0*nx1*y0*y1 + Terminal(4)*x0*x1*ny0*y1
-    
+    @info "Get scope"
+    # collect nonterminal nodes
+    nt = filter(n -> isa(n,Node), collect(graph))
+    @show scope = mapreduce(index,union,nt) # 0,1,2,3
+    @test length(intersect(scope,[0,1,2,3])) == 4
     println()
 
     @info "Matrix examples in page 9 of Bryant's paper"

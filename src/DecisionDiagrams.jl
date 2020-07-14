@@ -54,7 +54,7 @@ struct Node{T} <: DecisionDiagram{T}
     "High child vertex of BDD."
     high::DecisionDiagram{T}
     "Constructs a variable."
-    function Node{T}(i::Int, low::DecisionDiagram{T}, high::DecisionDiagram{T}) where T
+    function Node{T}(i::Integer, low::DecisionDiagram{T}, high::DecisionDiagram{T}) where T
         global nextid
         id = nextid
         nextid = (nextid + 1) % typemax(Int)
@@ -81,7 +81,7 @@ pliteral(index::Int) = indicator(Bool,index) # Positive Literal
 """"
     nliteral(index::Int)
 
-Creates a negated literal (an indicator over Boåolean constants) for variable index.
+Creates a negated literal (an indicator over Boolean constants) for variable index.
 """
 nliteral(index::Int) = indicator(Bool,index,true) # Negative Literal
 # GETTER functions
@@ -89,7 +89,7 @@ id(α::DecisionDiagram) = α.id
 index(α::Node) = α.index
 low(α::Node) = α.low
 high(α::Node) = α.high
-# Output
+# OUTPUT
 Base.show(io::IO,α::Node) = print(io,"\n@"), Base.show(io,α," ")
 function Base.show(io::IO,α::Node,prefix::String)
     print(io,"╮ V", index(α), " [", id(α), "] \n",prefix, "├─⊂−⊃─")
@@ -132,7 +132,11 @@ function Base.iterate(α::DecisionDiagram{T}, state = IteratorDiagram(DecisionDi
     end
     (node, state)
 end
+"We can't know the number of nodes in advance (to traversing the diagram)."
+Base.IteratorSize(::DecisionDiagram{T}) where T = Base.SizeUnknown()
 """
     A decision diagram is composed of other decision diagrams.
 """
 Base.eltype(α::Type{DecisionDiagram{T}}) where T = DecisionDiagram{T}
+"Returns the number of nodes in the diagram."
+Base.length(α::DecisionDiagram{T}) where T = length(collect(α))

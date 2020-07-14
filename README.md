@@ -1,4 +1,4 @@
-# AlgebraicDecisionDiagrams
+# AlgebraicDecisionDiagrams.jl
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://denismaua.github.io/AlgebraicDecisionDiagrams.jl/stable)
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://denismaua.github.io/AlgebraicDecisionDiagrams.jl/dev)
@@ -62,6 +62,12 @@ y0 = indicator(Int,1)
 y1 = indicator(Int,3)
 @show graph = Terminal(2)*(¬x0)*(¬x1)*(¬y0)*y1 + Terminal(2)*(¬x0)*(¬x1)*y0*(¬y1) + Terminal(2)*(¬x0)*x1*(¬y0)*y1 + Terminal(2)*(¬x0)*x1*y0*(¬y1) + Terminal(4)*x0*(¬x1)*y0*y1 + Terminal(4)*x0*x1*(¬y0)*y1
 
+## Diagram Traversal
+# To collect all nonterminal nodes of the previous diagram
+nt = filter(n -> isa(n,Node), collect(graph)) # node are traversed in breath-first order
+# now obtain its set of variable indices (without repetition)
+@show mapreduce(index,union,nt) # should contain 0,1,2,3
+
 ## Matrix examples in page 9
 @show f = (¬x0)*(¬y0) + x0*y0
 @show g = Terminal(4)*(¬x0) + Terminal(2)*x0
@@ -95,9 +101,7 @@ MLE = MultilinearExpression # Alias
 ```
 ## License
 
-(C) Denis Deratani Mauá.
-
-See LICENSE file
+(C) Denis Deratani Mauá. See LICENSE file.
 
 ## References
 
