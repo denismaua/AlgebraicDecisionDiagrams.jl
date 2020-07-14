@@ -64,7 +64,7 @@ y1 = indicator(Int,3)
 
 ## Diagram Traversal
 # To collect all nonterminal nodes of the previous diagram
-nt = filter(n -> isa(n,Node), collect(graph)) # node are traversed in breath-first order
+nt = filter(n -> isa(n,Node), collect(graph)) # node are traversed in depth-first order
 # now obtain its set of variable indices (without repetition)
 @show mapreduce(index,union,nt) # should contain 0,1,2,3
 

@@ -105,29 +105,32 @@ end
 
 # ITERATORS
 mutable struct IteratorDiagram{T}
-    queue::Vector{DecisionDiagram{T}}
+    frontier::Vector{DecisionDiagram{T}}
     visited::Set{Int}
     count::Int
 end
 """
-    Breadth-first search traversal.
+    Depth-first search traversal.
 """
 function Base.iterate(α::DecisionDiagram{T}, state = IteratorDiagram(DecisionDiagram{T}[α], Set{Int}(), 0)) where T
-    if isempty(state.queue)
+    if isempty(state.frontier)
         return nothing
     end
-    node = popfirst!(state.queue) #  change to pop! to perform DFS instead
-    while in(id(node),state.visited)
-        node = popfirst!(state.queue)
+    node = pop!(state.frontier) #  change to popfirst! to perform BFS instead
+    # get next unvisited state
+    while id(node) in state.visited
+        if isempty(state.frontier) return nothing end
+        node = pop!(state.frontier)
     end
+    # mark state as visited
     push!(state.visited, id(node))
     state.count += 1
     if isa(node, Node) # not a terminal
-        if !in(id(low(node)),state.visited)
-            push!(state.queue,low(node))
+        if !(id(low(node)) in state.visited)
+            push!(state.frontier,low(node))
         end
-        if !in(id(high(node)),state.visited)
-            push!(state.queue,high(node))
+        if !(id(high(node)) in state.visited)
+            push!(state.frontier,high(node))
         end
     end
     (node, state)
