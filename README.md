@@ -20,7 +20,7 @@ ADD are represented as parametric linked structures. The easiest way to create a
 ```julia
 using AlgebraicDecisionDiagrams
 # Use alias for convenience
-ADD = AlgebraicDecisionDiagrams 
+const ADD = AlgebraicDecisionDiagrams 
 
 # Boolean Decision Diagrams
 
@@ -80,7 +80,7 @@ nt = filter(n -> isa(n,Node), collect(graph)) # node are traversed in depth-firs
 
 # Parametrized ADDs: ADDs with Multilinear Expressions (MLE) constants
 
-MLE = MultilinearExpression # Alias
+const MLE = MultilinearExpression # Alias
 
 ## Create some MLE examples
 @show a = MLE(2.0,1,3) + MLE(2.0,3)
